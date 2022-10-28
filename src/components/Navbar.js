@@ -2,8 +2,10 @@ import React from "react";
 import { Box, AppBar, Toolbar, Typography, Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 import { AddShoppingCart } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const {cartTotalQuantity} = useSelector(state => state.cart)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -13,7 +15,7 @@ const Navbar = () => {
               Home
             </Link>
           </Typography>
-          <Badge badgeContent={3} color="primary">
+          <Badge badgeContent={cartTotalQuantity} color="primary">
             <Link to='/cart'>
             <AddShoppingCart color="action" />
             </Link>
